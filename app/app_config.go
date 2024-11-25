@@ -54,11 +54,17 @@ import (
 	"google.golang.org/protobuf/types/known/durationpb"
 
 	blogmodulev1 "habbitchain/api/habbitchain/blog/module"
+	coremodulev1 "habbitchain/api/habbitchain/core/module"
 	habbitchainmodulev1 "habbitchain/api/habbitchain/habbitchain/module"
+	profilemodulev1 "habbitchain/api/habbitchain/profile/module"
 	_ "habbitchain/x/blog/module" // import for side-effects
 	blogmoduletypes "habbitchain/x/blog/types"
+	_ "habbitchain/x/core/module" // import for side-effects
+	coremoduletypes "habbitchain/x/core/types"
 	_ "habbitchain/x/habbitchain/module" // import for side-effects
 	habbitchainmoduletypes "habbitchain/x/habbitchain/types"
+	_ "habbitchain/x/profile/module" // import for side-effects
+	profilemoduletypes "habbitchain/x/profile/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 )
 
@@ -98,6 +104,8 @@ var (
 		// chain modules
 		habbitchainmoduletypes.ModuleName,
 		blogmoduletypes.ModuleName,
+		coremoduletypes.ModuleName,
+		profilemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -124,6 +132,8 @@ var (
 		// chain modules
 		habbitchainmoduletypes.ModuleName,
 		blogmoduletypes.ModuleName,
+		coremoduletypes.ModuleName,
+		profilemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -144,6 +154,8 @@ var (
 		// chain modules
 		habbitchainmoduletypes.ModuleName,
 		blogmoduletypes.ModuleName,
+		coremoduletypes.ModuleName,
+		profilemoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -306,6 +318,14 @@ var (
 			{
 				Name:   blogmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&blogmodulev1.Module{}),
+			},
+			{
+				Name:   coremoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&coremodulev1.Module{}),
+			},
+			{
+				Name:   profilemoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&profilemodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},

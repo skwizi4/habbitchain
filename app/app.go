@@ -78,6 +78,9 @@ import (
 	blogmodulekeeper "habbitchain/x/blog/keeper"
 	habbitchainmodulekeeper "habbitchain/x/habbitchain/keeper"
 
+	coremodulekeeper "habbitchain/x/core/keeper"
+	profilemodulekeeper "habbitchain/x/profile/keeper"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	"habbitchain/docs"
@@ -145,6 +148,8 @@ type App struct {
 
 	HabbitchainKeeper habbitchainmodulekeeper.Keeper
 	BlogKeeper        blogmodulekeeper.Keeper
+	CoreKeeper        coremodulekeeper.Keeper
+	ProfileKeeper     profilemodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
@@ -250,6 +255,8 @@ func New(
 		&app.CircuitBreakerKeeper,
 		&app.HabbitchainKeeper,
 		&app.BlogKeeper,
+		&app.CoreKeeper,
+		&app.ProfileKeeper,
 		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 	); err != nil {
 		panic(err)
