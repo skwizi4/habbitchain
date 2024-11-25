@@ -1,0 +1,15 @@
+syntax = "proto3";
+package habbitchain.habbitchain;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "habbitchain/x/habbitchain/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "habbitchain/x/habbitchain/Params";
+  option (gogoproto.equal) = true;
+
+  
+}
