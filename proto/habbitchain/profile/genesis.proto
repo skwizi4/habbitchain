@@ -1,0 +1,17 @@
+syntax = "proto3";
+package habbitchain.profile;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "habbitchain/profile/params.proto";
+
+option go_package = "habbitchain/x/profile/types";
+
+// GenesisState defines the profile module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}

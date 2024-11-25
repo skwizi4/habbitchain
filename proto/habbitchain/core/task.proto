@@ -1,0 +1,11 @@
+syntax = "proto3";
+package habbitchain.core;
+
+option go_package = "habbitchain/x/core/types";
+
+message Task {
+  
+  string title = 1; 
+  string description = 2; 
+  bool completed = 3; 
+}

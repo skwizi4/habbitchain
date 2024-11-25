@@ -1,0 +1,12 @@
+syntax = "proto3";
+package habbitchain.profile;
+
+option go_package = "habbitchain/x/profile/types";
+
+message Profile {
+  
+  string username = 1; 
+  string pubKey = 2; 
+  int32 telegramId = 3; 
+  string cosmosAddress = 4; 
+}
