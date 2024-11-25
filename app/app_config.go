@@ -53,7 +53,10 @@ import (
 	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	"google.golang.org/protobuf/types/known/durationpb"
 
+	blogmodulev1 "habbitchain/api/habbitchain/blog/module"
 	habbitchainmodulev1 "habbitchain/api/habbitchain/habbitchain/module"
+	_ "habbitchain/x/blog/module" // import for side-effects
+	blogmoduletypes "habbitchain/x/blog/types"
 	_ "habbitchain/x/habbitchain/module" // import for side-effects
 	habbitchainmoduletypes "habbitchain/x/habbitchain/types"
 	// this line is used by starport scaffolding # stargate/app/moduleImport
@@ -94,6 +97,7 @@ var (
 		circuittypes.ModuleName,
 		// chain modules
 		habbitchainmoduletypes.ModuleName,
+		blogmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/initGenesis
 	}
 
@@ -119,6 +123,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		habbitchainmoduletypes.ModuleName,
+		blogmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/beginBlockers
 	}
 
@@ -138,6 +143,7 @@ var (
 		ibcfeetypes.ModuleName,
 		// chain modules
 		habbitchainmoduletypes.ModuleName,
+		blogmoduletypes.ModuleName,
 		// this line is used by starport scaffolding # stargate/app/endBlockers
 	}
 
@@ -296,6 +302,10 @@ var (
 			{
 				Name:   habbitchainmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&habbitchainmodulev1.Module{}),
+			},
+			{
+				Name:   blogmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&blogmodulev1.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},
